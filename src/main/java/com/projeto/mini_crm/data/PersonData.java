@@ -1,29 +1,36 @@
 package com.projeto.mini_crm.data;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.tomcat.jni.Address;
+
 public class PersonData {
 
-    private String name;
+    protected String name;
 
-    private String nickName;
+    protected String nickName;
 
-    private String email;
+    protected String email;
 
-    private int age;
+    protected int age;
 
-    private boolean married;
+    protected boolean married;
 
-    private String cpf;
+    protected String cpf;
+
+    protected AddressData address;
+
 
     public PersonData() {
     }
 
-    public PersonData(String name, String nickName, String email, int age, boolean married, String cpf) {
+    public PersonData(String name, String nickName, String email, int age, boolean married, String cpf, AddressData address) {
         this.name = name;
         this.nickName = nickName;
         this.email = email;
         this.age = age;
         this.married = married;
         this.cpf = cpf;
+        this.address = address;
     }
 
     public String getName() {
@@ -71,6 +78,24 @@ public class PersonData {
     }
 
     public void setCpf(String cpf) {
+
         this.cpf = cpf;
     }
+
+    public AddressData getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressData address) {
+        this.address = address;
+    }
+
+    public void validate(){
+        if(StringUtils.isBlank(name)||name.length() > 80){
+            throw new RuntimeException("Erro");
+        }
+    }
+
+
+
 }

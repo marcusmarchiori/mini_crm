@@ -6,5 +6,4 @@ public interface PersonService {
 
     PersonData createPerson(PersonData personData);
 
-
 }
