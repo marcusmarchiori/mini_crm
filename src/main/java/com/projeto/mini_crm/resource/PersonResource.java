@@ -1,6 +1,7 @@
 package com.projeto.mini_crm.resource;
 
 import com.projeto.mini_crm.data.AddressData;
+import com.projeto.mini_crm.data.ContactData;
 import com.projeto.mini_crm.data.PersonData;
 import com.projeto.mini_crm.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,7 @@ public class PersonResource {
 
     @GetMapping("/person/{id}")
     public PersonData getPerson(@PathVariable String id) {
-        return new PersonData("João da Silva", "João", "joao@mail.com", 25, true, "1234567890", new AddressData("Uberlandia", "Minas Gerais",
-                "Av. Joao Naves de Avila", 2121, "38408-100"));
+        return personService.getPerson(id);
     }
 
     @PostMapping("/person")
@@ -33,13 +33,11 @@ public class PersonResource {
 
     @DeleteMapping("/person/{id}")
     public PersonData deletePerson(@PathVariable String id) {
-        return new PersonData("João da Silva", "João", "joao@mail.com", 25, true, "1234567890", new AddressData("Uberlandia", "Minas Gerais",
-                "Av. Joao Naves de Avila", 2121, "38408-100"));
+        return personService.deletePerson(id);
     }
 
     @GetMapping("/person")
     public List<PersonData> findPeople(@RequestParam(value = "nameContains", required = true) String nameContains) {
-        return Arrays.asList(new PersonData("João da Silva", "João", "joao@mail.com", 25, true, "1234567890", new AddressData("Uberlandia", "Minas Gerais",
-                "Av. Joao Naves de Avila", 2121, "38408-100")));
+        return (List<PersonData>) personService.findPeople(nameContains);
     }
 }

@@ -9,8 +9,6 @@ public class PersonData {
 
     protected String nickName;
 
-    protected String email;
-
     protected int age;
 
     protected boolean married;
@@ -19,18 +17,19 @@ public class PersonData {
 
     protected AddressData address;
 
+    protected ContactData contact;
 
     public PersonData() {
     }
 
-    public PersonData(String name, String nickName, String email, int age, boolean married, String cpf, AddressData address) {
+    public PersonData(String name, String nickName, int age, boolean married, String cpf, AddressData address, ContactData contact) {
         this.name = name;
         this.nickName = nickName;
-        this.email = email;
         this.age = age;
         this.married = married;
         this.cpf = cpf;
         this.address = address;
+        this.contact = contact;
     }
 
     public String getName() {
@@ -47,14 +46,6 @@ public class PersonData {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getAge() {
